@@ -27,8 +27,10 @@ const recipes = ref([]);
 const username = ref('');
 
 const getUser = async () => {
-  const promise = await account.get();
-  username.value = promise.name;
+  if (localStorage.getItem('cookieFallback')) {
+    const promise = await account.get();
+    username.value = promise.name;
+  }
 }
 
 const getAllRecipes = async () => {
