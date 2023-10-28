@@ -14,8 +14,9 @@ const { account } = useDB();
 const route = useRoute();
 const router = useRouter();
 
-const logoutUser = () => {
-  const promise = account.deleteSession('current');
+const logoutUser = async () => {
+  const promise = await account.deleteSession('current');
+  localStorage.removeItem('cookieFallback')
   router.push({
     name: 'home'
   })

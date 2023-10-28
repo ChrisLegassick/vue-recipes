@@ -42,12 +42,8 @@ const loginAccount = async () => {
       return;
     }
     const data = await account.createEmailSession(userAccount.value.email, userAccount.value.password);
-    const session = await account.getSession('current');
     router.push({
       name: 'home',
-      query: {
-        loggedIn: session.current
-      }
     })
   } catch (error) {
     console.log(error)

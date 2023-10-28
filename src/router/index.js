@@ -23,7 +23,13 @@ const router = createRouter({
     {
       path: '/recipe/new',
       name: 'addRecipeView',
-      component: AddRecipeView
+      component: AddRecipeView,
+      beforeEnter: (to, from, next) => {
+        if (to.name !== 'loginView' && localStorage.getItem('cookieFallback') === null ){
+          window.alert('You must be logged in to create a recipe.')
+          next({ name: 'loginView' })}
+  else next()
+      }
     },
     {
       path: '/recipe/edit',

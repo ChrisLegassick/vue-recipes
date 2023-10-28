@@ -53,9 +53,7 @@ const searchRecipes = async (e) => {
 
 onMounted(() => {
   getAllRecipes();
-  if (route.query.loggedIn) {
-    getUser();
-  }
+  getUser();
 })
 
 const route = useRoute();

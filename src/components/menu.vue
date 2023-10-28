@@ -16,23 +16,17 @@
 
 <script setup>
 import { HomeIcon, PlusCircleIcon, UserIcon } from '@heroicons/vue/24/solid'
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { useDB } from '../components/dbConnection.js';
 
 const { account } = useDB();
 
-const route = useRoute();
-
 const router = useRouter();
-const addRecipe = (e) => {
-  e.preventDefault();
-  if (route.query.loggedIn) {
-    router.push({
-      name: 'addRecipeView'
-    })
-  } else {
-    window.alert('You must be logged in to create a recipe!')
-  }
+const addRecipe = () => {
+  router.push({
+    name: 'addRecipeView'
+  })
+
 }
 
 const backToHome = () => {
@@ -42,21 +36,24 @@ const backToHome = () => {
 }
 
 const goToAccount = async () => {
-  if (route.query.loggedIn) {
-    const promise = await account.get();
-    const user = promise.name
-    router.push({
-      name: 'logoutView',
-      query: {
-        user: user
+  try {
+    if (localStorage.getItem('cookieFallback')) {
+      const promise = await account.get();
+      const user = promise.name;
+      if (promise.$id) {
+        router.push({
+          name: 'logoutView',
+          query: { user }
+        })
       }
-    })
-  } else {
-    router.push({
-      name: 'loginView'
-    })
+    }
+    else {
+      router.push({
+        name: 'loginView'
+      })
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
 </script>
-
-<style scoped></style>
