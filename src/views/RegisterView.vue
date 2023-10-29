@@ -21,9 +21,9 @@
 <script setup>
 import BackBtn from '../components/backBtn.vue';
 import { ref } from 'vue';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 
-const { ID, account } = useDB();
+const { ID, account } = api();
 
 const userAccount = ref({
   email: "",

@@ -18,9 +18,9 @@
 import Recipe from '../components/Recipe.vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 
-const { databaseID, collectionID, databases, Query, account } = useDB();
+const { databaseID, collectionID, databases, Query, account } = api();
 
 const searchText = ref('');
 const recipes = ref([]);

@@ -17,9 +17,9 @@
 <script setup>
 import { HomeIcon, PlusCircleIcon, UserIcon } from '@heroicons/vue/24/solid'
 import { useRouter } from 'vue-router';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 
-const { account } = useDB();
+const { account } = api();
 
 const router = useRouter();
 const addRecipe = () => {

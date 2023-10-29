@@ -41,11 +41,11 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 import BackBtn from '../components/backBtn.vue';
 import { PlusIcon } from '@heroicons/vue/24/solid';
 
-const { databaseID, collectionID, databases, ID, account } = useDB();
+const { databaseID, collectionID, databases, ID, account } = api();
 
 const username = ref('');
 

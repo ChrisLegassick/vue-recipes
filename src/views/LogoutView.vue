@@ -7,9 +7,9 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 
-const { account } = useDB();
+const { account } = api();
 
 const route = useRoute();
 const router = useRouter();

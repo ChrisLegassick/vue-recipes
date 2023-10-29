@@ -35,11 +35,11 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
 import { ref } from 'vue';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 import BackBtn from './backBtn.vue';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/vue/24/solid'
 
-const { databaseID, collectionID, databases } = useDB();
+const { databaseID, collectionID, databases } = api();
 
 const recipeName = ref("");
 const recipeIngredients = ref([]);

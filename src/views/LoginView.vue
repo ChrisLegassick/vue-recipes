@@ -23,12 +23,12 @@
 <script setup>
 import BackBtn from '../components/backBtn.vue';
 import { ref } from 'vue';
-import { useDB } from '../components/dbConnection.js';
+import { api } from '../components/api.js';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const { account } = useDB();
+const { account } = api();
 
 const userAccount = ref({
   email: "",
